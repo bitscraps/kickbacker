@@ -1,8 +1,168 @@
-<html>
+<html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <style>
+      body {
+        font-family: 'Chivo', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 3em;
+        margin-top: 10%;
+        font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+      }
+      
+      p {
+        font-size: 3em;
+        margin-top: 10%;
+        font-family: "DM Serif Text", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .container {
+        max-width: 800px;
+        margin:auto;
+      }
+
+      input {
+        font-size: 1em;
+        font-family: "DM Serif Text", serif;
+        border: none;
+        background-color:transparent;
+        border-bottom:1px SOLID #333;
+        color: #333;
+        outline: none;
+        width:200px;
+      }
+
+      a {
+        cursor:pointer;
+        color: #FFF;
+        padding:10px;
+        background-color: #333;
+      }
+
+      link {
+        cursor:pointer;
+        color: #333;
+        padding:none;
+        background-color: transparent;
+      }
+
+      .normal {
+        font-family: sans-serif;
+      }
+
+      .sell {
+
+      }
+
+      .project {
+        max-width:500px;
+        width:100%;
+      }
+
+      .grease {
+        display:none;
+      }
+
+      .final {
+        display:none;
+      }
+
+      .disclaimer {
+        font-size: 1em;
+      }
+
+      .qr-container {
+        position: relative;
+        height:256px;
+        width:256px;
+      }
+
+      .float {
+        position: absolute;
+        font-size: 128px;
+        bottom:50%;
+        right:50%;  
+        margin-right: -72px;   
+        margin-bottom:-78px; 
+      }
+    </style>
+
+    <script>
+      function requestKickback() {
+        document.querySelector('.sell').style.display = 'none';
+        document.querySelector('.grease').style.display = 'block';
+
+      }
+
+      function sendKickback() {
+        url = "https://monzo.me/grahamhadgraft/"+document.getElementById('amount').value+"?h=cdbs24&d="+document.getElementById('project').value;
+        new QRCode("qr", url)
+        
+        // document.getElementById('qr').innerHTML = '<a href="'+url+'">'+url+'</a>';
+
+        document.querySelector('.grease').style.display = 'none';
+        
+        document.querySelector('.final').style.display = 'block';
+      }
+    </script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+></script>
     <title>KickBacker</title>
+
+    <script>
+
+    </script>
   </head>
   <body>
-    <h1>Are you impatient, are you sick of waiting for your feature or fix to get prioritised</h1>
+    <div class="container">
+      <div class="sell">
+        <h1>
+          Have a feature or fix you need done?<br/>
+          Don't want to wait? <br/>
+          Then KICKBACKer is for you!
+        </h1>
+        <a onclick="requestKickback()">I'm tired of waiting! ></a>
+      </div>
+      <div class="grease">
+        <p>Here's a little sweetner of £<input class="amount" id="amount" placeholder="10"> pounds.<br /> Make <input class="project" id="project" placeholder="my project"> your top priority<span class="superscript">*</span></p>
+        <a onclick="sendKickback()">I'm ready to grease the wheels! ></a>
+        <p class="disclaimer">Your kickback is not a guarantee that your work will get the top priority. The more you "donate" the more likely it is your project will get top priority. You're not the only one who might be providing kickbacks.</p>
+        
+      </div>
+      <div class="final">
+        <p>
+          Now just scan the qr code and complete your "donation". Your project will be top priority<br/> (if the price is right).
+        </p>
+        <div class="qr-container">
+
+        <div id="qr"></div>
+        <div class="float">💸</div>
+        </div>
+
+        <p class="disclaimer"><strong>April fool's</strong>. Any kickbacks that are sent will be donated to the ❤️‍🩹  <a class="link" href="https://www.bhf.org.uk/?appealid=tis-ppc-br&gclsrc=aw.ds&gad_source=1&gbraid=0AAAAAD6mX544y5leNT_uWCEx_gBCt0BiP&gclid=CjwKCAjw-qi_BhBxEiwAkxvbkOq8ZPUublFnchyJU8jZT8LkP9uo4Lgjt0MN8A5W8fTxyVxVU2nXjBoCVwUQAvD_BwE">British Heart Foundation</a></p>
+        
+      </div>
+    </div>
+
+
+
   </body>
 </html>
